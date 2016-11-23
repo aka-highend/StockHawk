@@ -20,6 +20,7 @@ import com.rfachrur.stockhawk.utils.Utils;
 
 /**
  * Created by rfachrur on 11/24/16.
+ *
  */
 
 public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAdapter.ViewHolder>
