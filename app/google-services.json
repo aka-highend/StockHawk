@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "516547815019",
+    "firebase_url": "https://stockhawk-150412.firebaseio.com",
+    "project_id": "stockhawk-150412",
+    "storage_bucket": "stockhawk-150412.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516547815019:android:26f6c7ca72f3c5ba",
+        "android_client_info": {
+          "package_name": "com.rfachrur.stockhawk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516547815019-0mr7jpfdvkr26vr5sbn9q7qkklrscnpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQeBX07CMLgB6wfQibJZeI0IziHrBPF4k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
