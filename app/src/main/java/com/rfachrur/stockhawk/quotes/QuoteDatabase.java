@@ -5,6 +5,7 @@ import net.simonvt.schematic.annotation.Table;
 
 /**
  * Created by rfachrur on 11/23/16.
+ *
  */
 
 @Database(version = QuoteDatabase.VERSION)

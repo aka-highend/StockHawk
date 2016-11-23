@@ -8,6 +8,7 @@ import com.rfachrur.stockhawk.R;
 
 /**
  * Created by rfachrur on 11/23/16.
+ *
  */
 
 public class StockIntentService extends IntentService {

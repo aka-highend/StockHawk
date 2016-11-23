@@ -7,6 +7,7 @@ import net.simonvt.schematic.annotation.PrimaryKey;
 
 /**
  * Created by rfachrur on 11/23/16.
+ *
  */
 
 public class QuoteColumns {

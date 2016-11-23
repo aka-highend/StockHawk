@@ -26,6 +26,7 @@ import java.net.URLEncoder;
 
 /**
  * Created by rfachrur on 11/23/16.
+ * 
  */
 
 public class StockTaskService extends GcmTaskService {
