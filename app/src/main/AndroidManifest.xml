@@ -15,25 +15,55 @@
 
     <application
         android:allowBackup="true"
+        android:supportsRtl="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!--<service-->
-            <!--android:name=".MyFirebaseMessagingService">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
-            <!--</intent-filter>-->
-        <!--</service>-->
-
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+
+        <activity
+            android:name=".activities.DetailsActivity"
+            android:parentActivityName=".activities.MainActivity"/>
+
+        <service android:name=".stockservices.StockTaskService"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".stockservices.StockIntentService" />
+
+        <service
+            android:name="com.rfachrur.stockhawk.widget.StockWidgetRemoteService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false"/>
+
+        <provider
+            android:authorities="com.rfachrur.stockhawk.quotes.QuoteProvider"
+            android:name="com.rfachrur.stockhawk.quotes.generated.QuoteProvider"
+            android:exported="false"/>
+
+        <receiver
+            android:name="com.rfachrur.stockhawk.widget.StockWidgetProvider"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.rfachrur.stockhawk.DATA_UPDATED"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/stock_widget"/>
+        </receiver>
+    </application>
 </manifest>

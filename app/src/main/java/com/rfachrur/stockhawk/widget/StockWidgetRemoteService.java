@@ -7,14 +7,14 @@ import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import com.rfachrur.stockhawk.DetailsActivity;
+import com.rfachrur.stockhawk.activities.DetailsActivity;
 import com.rfachrur.stockhawk.R;
 import com.rfachrur.stockhawk.quotes.QuoteColumns;
 import com.rfachrur.stockhawk.quotes.QuoteProvider;
 
 /**
  * Created by rfachrur on 11/24/16.
- * 
+ *
  */
 
 public class StockWidgetRemoteService extends RemoteViewsService {

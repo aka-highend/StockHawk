@@ -1,4 +1,4 @@
-package com.rfachrur.stockhawk;
+package com.rfachrur.stockhawk.activities;
 
 import android.app.LoaderManager;
 import android.content.Context;
@@ -26,6 +26,7 @@ import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
 import com.google.android.gms.gcm.Task;
 import com.melnykov.fab.FloatingActionButton;
+import com.rfachrur.stockhawk.R;
 import com.rfachrur.stockhawk.quotes.QuoteColumns;
 import com.rfachrur.stockhawk.quotes.QuoteProvider;
 import com.rfachrur.stockhawk.rest.QuoteCursorAdapter;
@@ -228,5 +229,5 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoaderReset(Loader<Cursor> loader) {
         mCursorAdapter.swapCursor(null);
     }
-    
+
 }

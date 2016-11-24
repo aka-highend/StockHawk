@@ -1,4 +1,4 @@
-package com.rfachrur.stockhawk;
+package com.rfachrur.stockhawk.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.rfachrur.stockhawk.R;
 import com.rfachrur.stockhawk.fragments.FirstFragment;
 import com.rfachrur.stockhawk.fragments.SecondFragment;
 import com.rfachrur.stockhawk.fragments.ThirdFragment;
@@ -18,6 +19,7 @@ import java.util.List;
 
 /**
  * Created by rfachrur on 11/23/16.
+ *
  */
 
 public class DetailsActivity extends AppCompatActivity {
@@ -63,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -92,7 +94,7 @@ public class DetailsActivity extends AppCompatActivity {
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }

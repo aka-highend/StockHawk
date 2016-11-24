@@ -9,11 +9,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.TaskStackBuilder;
-import android.view.View;
 import android.widget.RemoteViews;
 
-import com.rfachrur.stockhawk.DetailsActivity;
-import com.rfachrur.stockhawk.MainActivity;
+import com.rfachrur.stockhawk.activities.DetailsActivity;
+import com.rfachrur.stockhawk.activities.MainActivity;
 import com.rfachrur.stockhawk.R;
 import com.rfachrur.stockhawk.stockservices.StockTaskService;
 
