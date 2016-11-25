@@ -73,7 +73,8 @@ public class StockTaskService extends GcmTaskService {
             initQueryCursor = mContext.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
                     new String[] { "Distinct " + QuoteColumns.SYMBOL }, null,
                     null, null);
-            if (initQueryCursor.getCount() == 0 || initQueryCursor == null){
+            assert initQueryCursor != null;
+            if (initQueryCursor.getCount() == 0){
                 // Init task. Populates DB with quotes for the symbols seen below
                 try {
                     urlStringBuilder.append(
@@ -81,12 +82,12 @@ public class StockTaskService extends GcmTaskService {
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-            } else if (initQueryCursor != null){
+            } else {
                 DatabaseUtils.dumpCursor(initQueryCursor);
                 initQueryCursor.moveToFirst();
                 for (int i = 0; i < initQueryCursor.getCount(); i++){
-                    mStoredSymbols.append("\""+
-                            initQueryCursor.getString(initQueryCursor.getColumnIndex("symbol"))+"\",");
+                    mStoredSymbols.append("\"").append(initQueryCursor.getString(initQueryCursor.
+                            getColumnIndex("symbol"))).append("\",");
                     initQueryCursor.moveToNext();
                 }
                 mStoredSymbols.replace(mStoredSymbols.length() - 1, mStoredSymbols.length(), ")");
@@ -114,28 +115,26 @@ public class StockTaskService extends GcmTaskService {
         String getResponse;
         int result = GcmNetworkManager.RESULT_FAILURE;
 
-        if (urlStringBuilder != null){
-            urlString = urlStringBuilder.toString();
-            try{
-                getResponse = fetchData(urlString);
-                result = GcmNetworkManager.RESULT_SUCCESS;
-                try {
-                    ContentValues contentValues = new ContentValues();
-                    // update ISCURRENT to 0 (false) so new data is current
-                    if (isUpdate){
-                        contentValues.put(QuoteColumns.ISCURRENT, 0);
-                        mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
-                                null, null);
-                    }
-                    mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
-                            Utils.quoteJsonToContentVals(getResponse));
-                    updateWidget();
-                }catch (RemoteException | OperationApplicationException e){
-                    Log.e(LOG_TAG, getResources().getString(R.string.error_batch), e);
+        urlString = urlStringBuilder.toString();
+        try{
+            getResponse = fetchData(urlString);
+            result = GcmNetworkManager.RESULT_SUCCESS;
+            try {
+                ContentValues contentValues = new ContentValues();
+                // update ISCURRENT to 0 (false) so new data is current
+                if (isUpdate){
+                    contentValues.put(QuoteColumns.ISCURRENT, 0);
+                    mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
+                            null, null);
                 }
-            } catch (IOException e){
-                e.printStackTrace();
+                mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
+                        Utils.quoteJsonToContentVals(getResponse));
+                updateWidget();
+            }catch (RemoteException | OperationApplicationException e){
+                Log.e(LOG_TAG, getResources().getString(R.string.error_batch), e);
             }
+        } catch (IOException e){
+            e.printStackTrace();
         }
 
         return result;
