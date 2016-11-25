@@ -11,6 +11,7 @@ import com.rfachrur.stockhawk.R;
 
 /**
  * Created by rfachrur on 11/24/16.
+ *
  */
 
 public class SecondFragment extends Fragment {

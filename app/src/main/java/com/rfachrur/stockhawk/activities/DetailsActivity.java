@@ -25,8 +25,6 @@ import java.util.List;
 public class DetailsActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
     Bundle symbol;
 
     @Override
@@ -39,10 +37,10 @@ public class DetailsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         String s = getIntent().getStringExtra(getResources().getString(R.string.symbol_label));

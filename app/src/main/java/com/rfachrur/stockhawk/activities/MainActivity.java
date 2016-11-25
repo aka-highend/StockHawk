@@ -38,9 +38,7 @@ import com.rfachrur.stockhawk.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private CharSequence mTitle;
     private Intent mServiceIntent;
-    private ItemTouchHelper mItemTouchHelper;
     private static final int CURSOR_LOADER_ID = 0;
     private QuoteCursorAdapter mCursorAdapter;
     private Context mContext;
@@ -117,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                                     Cursor c = getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
                                             new String[]{QuoteColumns.SYMBOL}, QuoteColumns.SYMBOL + "= ?",
                                             new String[]{input.toString()}, null);
+                                    assert c != null;
                                     if (c.getCount() != 0) {
                                         Toast toast =
                                                 Toast.makeText(MainActivity.this,
@@ -143,10 +142,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mCursorAdapter);
-        mItemTouchHelper = new ItemTouchHelper(callback);
+        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);
 
-        mTitle = getTitle();
+        CharSequence mTitle = getTitle();
         if (isConnected) {
             long period = 3600L;
             long flex = 10L;

@@ -29,11 +29,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView txttitle, txtdes;
-        public CardView cardView;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView txttitle, txtdes;
+        CardView cardView;
 
-        public MyViewHolder(View v) {
+        MyViewHolder(View v) {
             super(v);
             cardView = (CardView) v.findViewById(R.id.card_view);
             txttitle = (TextView) v.findViewById(R.id.headline);
