@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.rfachrur.stockhawk.R;
 import com.rfachrur.stockhawk.quotes.QuoteColumns;
 import com.rfachrur.stockhawk.quotes.QuoteProvider;
-import com.rfachrur.stockhawk.touch.ItemTouchHelperAdapter;
-import com.rfachrur.stockhawk.touch.ItemTouchHelperViewHolder;
+import com.rfachrur.stockhawk.touch_interface.ItemTouchHelperAdapter;
+import com.rfachrur.stockhawk.touch_interface.ItemTouchHelperViewHolder;
 import com.rfachrur.stockhawk.utils.Utils;
 
 /**

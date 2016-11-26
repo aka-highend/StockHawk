@@ -1,7 +1,10 @@
-package com.rfachrur.stockhawk.touch;
+package com.rfachrur.stockhawk.helper_touch;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+
+import com.rfachrur.stockhawk.touch_interface.ItemTouchHelperAdapter;
+import com.rfachrur.stockhawk.touch_interface.ItemTouchHelperViewHolder;
 
 /**
  * Created by rfachrur on 11/23/16.
