@@ -71,7 +71,8 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
         }
     }
 
-    @Override public void onItemDismiss(int position) {
+    @Override
+    public void onItemDismiss(int position) {
         Cursor c = getCursor();
         c.moveToPosition(position);
         String symbol = c.getString(c.getColumnIndex(QuoteColumns.SYMBOL));
@@ -79,7 +80,8 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
         notifyItemRemoved(position);
     }
 
-    @Override public int getItemCount() {
+    @Override
+    public int getItemCount() {
         return super.getItemCount();
     }
 
