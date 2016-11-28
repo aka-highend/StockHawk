@@ -1,4 +1,4 @@
-package com.rfachrur.stockhawk.stockservices;
+package com.rfachrur.stockhawk.stock_services;
 
 import android.content.ContentValues;
 import android.content.Context;

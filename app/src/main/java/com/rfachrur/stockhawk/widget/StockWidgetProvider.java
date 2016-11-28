@@ -14,7 +14,7 @@ import android.widget.RemoteViews;
 import com.rfachrur.stockhawk.activities.DetailsActivity;
 import com.rfachrur.stockhawk.activities.MainActivity;
 import com.rfachrur.stockhawk.R;
-import com.rfachrur.stockhawk.stockservices.StockTaskService;
+import com.rfachrur.stockhawk.stock_services.StockTaskService;
 
 /**
  * Created by rfachrur on 11/24/16.

@@ -1,4 +1,4 @@
-package com.rfachrur.stockhawk.stockservices;
+package com.rfachrur.stockhawk.stock_services;
 
 import android.app.IntentService;
 import android.content.Intent;

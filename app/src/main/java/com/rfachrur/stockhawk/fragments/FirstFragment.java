@@ -89,7 +89,8 @@ public class FirstFragment extends Fragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (error instanceof NoConnectionError) {
-                        Toast.makeText(getContext(), getResources().getString(R.string.network_toast), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.network_toast),
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             }) {

@@ -29,10 +29,10 @@ import com.melnykov.fab.FloatingActionButton;
 import com.rfachrur.stockhawk.R;
 import com.rfachrur.stockhawk.quotes.QuoteColumns;
 import com.rfachrur.stockhawk.quotes.QuoteProvider;
-import com.rfachrur.stockhawk.rest.QuoteCursorAdapter;
-import com.rfachrur.stockhawk.rest.RecyclerViewItemClickListener;
-import com.rfachrur.stockhawk.stockservices.StockIntentService;
-import com.rfachrur.stockhawk.stockservices.StockTaskService;
+import com.rfachrur.stockhawk.rest_recycler.QuoteCursorAdapter;
+import com.rfachrur.stockhawk.rest_recycler.RecyclerViewItemClickListener;
+import com.rfachrur.stockhawk.stock_services.StockIntentService;
+import com.rfachrur.stockhawk.stock_services.StockTaskService;
 import com.rfachrur.stockhawk.helper_touch.SimpleItemTouchHelperCallback;
 import com.rfachrur.stockhawk.utils.Utils;
 

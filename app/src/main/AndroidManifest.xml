@@ -34,7 +34,7 @@
             android:name=".activities.DetailsActivity"
             android:parentActivityName=".activities.MainActivity"/>
 
-        <service android:name=".stockservices.StockTaskService"
+        <service android:name=".stock_services.StockTaskService"
             android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
             android:exported="true">
             <intent-filter>
@@ -42,7 +42,7 @@
             </intent-filter>
         </service>
 
-        <service android:name=".stockservices.StockIntentService" />
+        <service android:name=".stock_services.StockIntentService" />
 
         <service
             android:name="com.rfachrur.stockhawk.widget.StockWidgetRemoteService"
