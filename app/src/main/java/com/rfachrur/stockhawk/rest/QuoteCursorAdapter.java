@@ -23,8 +23,8 @@ import com.rfachrur.stockhawk.utils.Utils;
  *
  */
 
-public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAdapter.ViewHolder>
-        implements ItemTouchHelperAdapter {
+public class QuoteCursorAdapter extends
+        CursorRecyclerViewAdapter<QuoteCursorAdapter.ViewHolder> implements ItemTouchHelperAdapter {
 
     private static Context mContext;
     private static Typeface robotoLight;
@@ -59,7 +59,7 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
             if (sdk < Build.VERSION_CODES.JELLY_BEAN) {
                 viewHolder.change.setBackgroundDrawable(
                         mContext.getResources().getDrawable(R.drawable.percent_change_pill_red));
-            } else{
+            } else {
                 viewHolder.change.setBackground(
                         mContext.getResources().getDrawable(R.drawable.percent_change_pill_red));
             }

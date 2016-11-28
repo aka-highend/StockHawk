@@ -41,26 +41,24 @@ public class StockTaskService extends GcmTaskService {
 
     public StockTaskService(){}
 
-    public StockTaskService(Context context){
-        mContext = context;
-    }
-    String fetchData(String url) throws IOException{
+    public StockTaskService(Context context) { mContext = context; }
+
+    String fetchData(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-
         Response response = client.newCall(request).execute();
         return response.body().string();
     }
 
     @Override
-    public int onRunTask(TaskParams params){
+    public int onRunTask(TaskParams params) {
         Cursor initQueryCursor;
         if (mContext == null){
             mContext = this;
         }
         StringBuilder urlStringBuilder = new StringBuilder();
-        try{
+        try {
             // Base URL for the Yahoo query
             urlStringBuilder.append("https://query.yahooapis.com/v1/public/yql?q=");
             urlStringBuilder.append(URLEncoder.encode("select * from yahoo.finance.quotes where symbol "
@@ -68,13 +66,13 @@ public class StockTaskService extends GcmTaskService {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        if (params.getTag().equals("init") || params.getTag().equals("periodic")){
+        if (params.getTag().equals("init") || params.getTag().equals("periodic")) {
             isUpdate = true;
             initQueryCursor = mContext.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
                     new String[] { "Distinct " + QuoteColumns.SYMBOL }, null,
                     null, null);
             assert initQueryCursor != null;
-            if (initQueryCursor.getCount() == 0){
+            if (initQueryCursor.getCount() == 0) {
                 // Init task. Populates DB with quotes for the symbols seen below
                 try {
                     urlStringBuilder.append(
@@ -85,7 +83,7 @@ public class StockTaskService extends GcmTaskService {
             } else {
                 DatabaseUtils.dumpCursor(initQueryCursor);
                 initQueryCursor.moveToFirst();
-                for (int i = 0; i < initQueryCursor.getCount(); i++){
+                for (int i = 0; i < initQueryCursor.getCount(); i++) {
                     mStoredSymbols.append("\"").append(initQueryCursor.getString(initQueryCursor.
                             getColumnIndex("symbol"))).append("\",");
                     initQueryCursor.moveToNext();
@@ -97,7 +95,7 @@ public class StockTaskService extends GcmTaskService {
                     e.printStackTrace();
                 }
             }
-        } else if (params.getTag().equals("add")){
+        } else if (params.getTag().equals("add")) {
             isUpdate = false;
             // get symbol from params.getExtra and build query
             String stockInput = params.getExtras().getString("symbol");
@@ -116,13 +114,13 @@ public class StockTaskService extends GcmTaskService {
         int result = GcmNetworkManager.RESULT_FAILURE;
 
         urlString = urlStringBuilder.toString();
-        try{
+        try {
             getResponse = fetchData(urlString);
             result = GcmNetworkManager.RESULT_SUCCESS;
             try {
                 ContentValues contentValues = new ContentValues();
                 // update ISCURRENT to 0 (false) so new data is current
-                if (isUpdate){
+                if (isUpdate) {
                     contentValues.put(QuoteColumns.ISCURRENT, 0);
                     mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
                             null, null);
@@ -133,7 +131,7 @@ public class StockTaskService extends GcmTaskService {
             }catch (RemoteException | OperationApplicationException e){
                 Log.e(LOG_TAG, getResources().getString(R.string.error_batch), e);
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

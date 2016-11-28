@@ -23,7 +23,7 @@ public class Utils {
 
     public static boolean showPercent = true;
 
-    public static ArrayList quoteJsonToContentVals(String JSON){
+    public static ArrayList quoteJsonToContentVals(String JSON) {
         ArrayList<ContentProviderOperation> batchOperations = new ArrayList<>();
         JSONObject jsonObject = null;
         JSONArray resultsArray = null;
@@ -47,21 +47,22 @@ public class Utils {
                     }
                 }
             }
-        } catch (JSONException e){
+        } catch (JSONException e) {
             Log.e(LOG_TAG, "String to JSON failed: " + e);
         }
         return batchOperations;
     }
 
-    private static String truncateBidPrice(String bidPrice){
+    private static String truncateBidPrice(String bidPrice) {
         bidPrice = String.format("%.2f", Float.parseFloat(bidPrice));
         return bidPrice;
     }
 
-    private static String truncateChange(String change, boolean isPercentChange){
+    private static String truncateChange(String change, boolean isPercentChange) {
         String weight = change.substring(0,1);
         String ampersand = "";
-        if (isPercentChange){
+
+        if (isPercentChange) {
             ampersand = change.substring(change.length() - 1, change.length());
             change = change.substring(0, change.length() - 1);
         }
@@ -86,9 +87,9 @@ public class Utils {
                     jsonObject.getString("ChangeinPercent"), true));
             builder.withValue(QuoteColumns.CHANGE, truncateChange(change, false));
             builder.withValue(QuoteColumns.ISCURRENT, 1);
-            if (change.charAt(0) == '-'){
+            if (change.charAt(0) == '-') {
                 builder.withValue(QuoteColumns.ISUP, 0);
-            }else{
+            } else {
                 builder.withValue(QuoteColumns.ISUP, 1);
             }
 

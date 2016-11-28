@@ -69,7 +69,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     FirstFragment f1 = new FirstFragment();
                     f1.setArguments(symbol);
