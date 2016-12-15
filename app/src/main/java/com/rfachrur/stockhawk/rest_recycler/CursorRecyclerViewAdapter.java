@@ -40,14 +40,16 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
         return 0;
     }
 
-    @Override public long getItemId(int position) {
-        if (dataIsValid && mCursor != null && mCursor.moveToPosition(position)){
+    @Override
+    public long getItemId(int position) {
+        if (dataIsValid && mCursor != null && mCursor.moveToPosition(position)) {
             return mCursor.getLong(rowIdColumn);
         }
         return 0;
     }
 
-    @Override public void setHasStableIds(boolean hasStableIds) {
+    @Override
+    public void setHasStableIds(boolean hasStableIds) {
         super.setHasStableIds(true);
     }
 
@@ -65,23 +67,23 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
         onBindViewHolder(viewHolder, mCursor);
     }
 
-    public Cursor swapCursor(Cursor newCursor){
-        if (newCursor == mCursor){
+    public Cursor swapCursor(Cursor newCursor) {
+        if (newCursor == mCursor) {
             return null;
         }
         final Cursor oldCursor = mCursor;
-        if (oldCursor != null && mDataSetObserver != null){
+        if (oldCursor != null && mDataSetObserver != null) {
             oldCursor.unregisterDataSetObserver(mDataSetObserver);
         }
         mCursor = newCursor;
-        if (mCursor != null){
-            if (mDataSetObserver != null){
+        if (mCursor != null) {
+            if (mDataSetObserver != null) {
                 mCursor.registerDataSetObserver(mDataSetObserver);
             }
             rowIdColumn = newCursor.getColumnIndexOrThrow("_id");
             dataIsValid = true;
             notifyDataSetChanged();
-        }else{
+        } else {
             rowIdColumn = -1;
             dataIsValid = false;
             notifyDataSetChanged();
@@ -89,7 +91,7 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
         return oldCursor;
     }
 
-    private class NotifyingDataSetObserver extends DataSetObserver{
+    private class NotifyingDataSetObserver extends DataSetObserver {
         @Override
         public void onChanged() {
             super.onChanged();
